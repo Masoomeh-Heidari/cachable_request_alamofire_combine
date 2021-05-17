@@ -34,14 +34,7 @@ class RequestManager {
                         callBack(data,nil)
                     }
                 case .failure(let error):
-                    if error.responseCode == NSURLErrorNotConnectedToInternet {
-                        let urlRequest = try? response.request?.asURLRequest()
-                        if let data = self.cache.cachedResponse(for: urlRequest!)?.data {
-                            callBack(data,nil)
-                        }else {
-                            callBack(nil,error)
-                        }
-                    }
+                        callBack(nil,error)
             }
         }
     }
